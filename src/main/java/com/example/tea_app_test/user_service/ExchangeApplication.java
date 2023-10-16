@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExchangeApplication {
 
 	public static void main(String[] args) {
+		System.out.println("+");
 		SpringApplication.run(ExchangeApplication.class, args);
 	}
 
