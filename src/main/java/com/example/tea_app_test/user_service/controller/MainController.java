@@ -3,6 +3,7 @@ package com.example.tea_app_test.user_service.controller;
 
 import com.example.tea_app_test.user_service.domain.Role;
 import com.example.tea_app_test.user_service.domain.User;
+import com.example.tea_app_test.user_service.dto.UserDto;
 import com.example.tea_app_test.user_service.repository.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class MainController {
                       Map<String, Object> model) {
 
         System.out.println("post registration");
+        //UserDto userDto = new UserDto()
         User user = new User(email, password, name, surname,
                 Set.of(Role.ADMIN, Role.USER, Role.MODERATOR),
                 true);
