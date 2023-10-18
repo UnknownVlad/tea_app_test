@@ -8,7 +8,6 @@ public enum Role implements GrantedAuthority {
     MODERATOR,
     USER;
 
-
     @Override
     public String getAuthority() {
         return name();

@@ -19,7 +19,7 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/hello")
+    /*@GetMapping("/hello")
     public String greeting(
             @RequestParam(name="name", required=false, defaultValue="World") String name,
             Map<String, Object> model
@@ -27,7 +27,7 @@ public class MainController {
         System.out.println("hello");
         model.put("name", name);
         return "hello";
-    }
+    }*/
 
     @GetMapping("/registration")
     public String registration(Map<String, Object> model) {
@@ -56,10 +56,29 @@ public class MainController {
         model.put("users", user);
 
 
-        return "reregistration";
+        return "redirect:/login";
     }
 
+    /*@GetMapping("/login")
+    public String login(Map<String, Object> model) {
+        System.out.println("get registration");
 
+        return "login";
+    }
+    @PostMapping("/login")
+    public String loginning(@RequestParam String email,
+                      @RequestParam String password,
+                      Map<String, Object> model) {
+
+
+        System.out.println("TESTING");
+        System.out.println(email);
+        System.out.println(password);
+
+
+        return "redirect:/hello";
+    }
+*/
 
 
 }

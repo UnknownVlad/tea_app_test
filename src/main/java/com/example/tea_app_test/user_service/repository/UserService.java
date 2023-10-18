@@ -3,25 +3,22 @@ package com.example.tea_app_test.user_service.repository;
 
 import com.example.tea_app_test.user_service.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public User loadUserByUsername(String email) throws Exception {
-        User user = userRepository.findByEmail(email);
-
-        if (user == null) {
-            throw new Exception("User not found");
-        }
-
-        return user;
-    }
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -38,9 +35,20 @@ public class UserService {
             System.out.println("+");
             return false;
         }
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
         return true;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        User user = userRepository.findByEmail(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
+
+        return user;
     }
 }
