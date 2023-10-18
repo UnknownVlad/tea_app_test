@@ -26,6 +26,7 @@ public class WebSecurityConfig  {
                 .csrf()
                 .disable()
                     .authorizeRequests()
+                    .antMatchers("/").permitAll()
                     .antMatchers("/registration").permitAll()
                     .antMatchers("/hello").authenticated()
                     .anyRequest().authenticated()
@@ -35,7 +36,7 @@ public class WebSecurityConfig  {
                     .permitAll()
                 .and()
                     .logout().permitAll()
-                    .logoutSuccessUrl("/");
+                    .logoutSuccessUrl("/logout");
 
         return httpSecurity.build();
     }
