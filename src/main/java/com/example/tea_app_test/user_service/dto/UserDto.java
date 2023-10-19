@@ -2,32 +2,40 @@ package com.example.tea_app_test.user_service.dto;
 
 import com.example.tea_app_test.user_service.utils.PasswordMatches;
 import com.example.tea_app_test.user_service.utils.ValidEmail;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @PasswordMatches
+@ToString
 public class UserDto {
-
     @NotNull
     @NotEmpty
     @ValidEmail
     private String email;
+
     @NotNull
     @NotEmpty
-    private String username;
+    private String name;
+
+    @NotNull
+    @NotEmpty
+    private String surname;
 
     @NotNull
     @NotEmpty
     private String password;
+
+    @NotNull
+    @NotEmpty
     private String matchingPassword;
 
 }

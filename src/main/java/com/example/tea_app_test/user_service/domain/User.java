@@ -7,20 +7,24 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
 public class User implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
     private String email;
     private String password;
     private String name;
@@ -31,6 +35,15 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     private boolean active;
+
+    public User(String email, String password, String name, String surname, Set<Role> roles, boolean active) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.roles = roles;
+        this.active = active;
+    }
 
     @Override
     public String getPassword() {

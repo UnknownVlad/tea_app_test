@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class MainController {
@@ -20,67 +25,31 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    /*@GetMapping("/hello")
-    public String greeting(
-            @RequestParam(name="name", required=false, defaultValue="World") String name,
-            Map<String, Object> model
-    ) {
-        System.out.println("hello");
-        model.put("name", name);
-        return "hello";
-    }*/
+    /***
+     *     public String add(@RequestParam String email,
+     *                       @RequestParam String password,
+     *                       @RequestParam String name,
+     *                       @RequestParam String surname
+     *                       ) {
+     *
+     *        ...
+     *     }
+     */
 
     @GetMapping("/registration")
-    public String registration(Map<String, Object> model) {
-        System.out.println("get registration");
+    public String registration() {
+
+
 
         return "registration";
     }
 
+
     @PostMapping("/registration")
-    public String add(@RequestParam String email,
-                      @RequestParam String password,
-                      @RequestParam String name,
-                      @RequestParam String surname,
-                      Map<String, Object> model) {
-
-        System.out.println("post registration");
-        //UserDto userDto = new UserDto()
-        User user = new User(email, password, name, surname,
-                Set.of(Role.ADMIN, Role.USER, Role.MODERATOR),
-                true);
-
-
-        userService.save(user);
-
-
-
-        model.put("users", user);
-
-
+    public String add(@Valid UserDto userDto) {
+        userService.save(userDto);
         return "redirect:/login";
     }
-
-    /*@GetMapping("/login")
-    public String login(Map<String, Object> model) {
-        System.out.println("get registration");
-
-        return "login";
-    }
-    @PostMapping("/login")
-    public String loginning(@RequestParam String email,
-                      @RequestParam String password,
-                      Map<String, Object> model) {
-
-
-        System.out.println("TESTING");
-        System.out.println(email);
-        System.out.println(password);
-
-
-        return "redirect:/hello";
-    }
-*/
 
 
 }

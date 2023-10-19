@@ -1,7 +1,9 @@
 package com.example.tea_app_test.user_service.repository;
 
 
+import com.example.tea_app_test.user_service.domain.Role;
 import com.example.tea_app_test.user_service.domain.User;
+import com.example.tea_app_test.user_service.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -28,18 +31,28 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
 
-    public boolean save(User user) {
+
+    public boolean save(UserDto user) {
         User userFromDB = userRepository.findByEmail(user.getEmail());
 
         if (userFromDB != null) {
-            System.out.println("+");
             return false;
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //Делать пользователя неактивным
+        userRepository.save(
+                new User(
+                        user.getEmail(),
+                        passwordEncoder.encode(user.getPassword()),
+                        user.getName(),
+                        user.getSurname(),
+                        Set.of(Role.USER),
+                        true
+                )
+        );
 
-        userRepository.save(user);
         return true;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) {

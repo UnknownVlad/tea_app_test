@@ -34,9 +34,11 @@ public class WebSecurityConfig  {
                     .formLogin()
                     .loginPage("/login")
                     .permitAll()
+
                 .and()
                     .logout().permitAll()
                     .logoutSuccessUrl("/logout");
+
 
         return httpSecurity.build();
     }
