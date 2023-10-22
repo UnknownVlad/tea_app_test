@@ -1,17 +1,13 @@
-
 package com.example.tea_app_test.user_service.domain;
-
-
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "users")
@@ -23,7 +19,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String email;
     private String password;
