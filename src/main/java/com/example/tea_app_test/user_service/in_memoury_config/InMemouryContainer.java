@@ -6,10 +6,7 @@ import java.util.HashMap;
 
 @Service
 public class InMemouryContainer<K, V> {
-
     private HashMap<K, V> conteiner = new HashMap<>();
-
-
 
     public V get(K id){
         return conteiner.getOrDefault(id, null);
@@ -23,6 +20,9 @@ public class InMemouryContainer<K, V> {
         return conteiner.remove(key);
     }
 
+    public HashMap<K, V> getConteiner() {
+        return conteiner;
+    }
 
 
 }

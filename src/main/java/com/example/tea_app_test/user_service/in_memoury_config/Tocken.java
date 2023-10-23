@@ -4,12 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.data.redis.core.RedisHash;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serial;
 import java.io.Serializable;
 
 @Data
@@ -17,19 +11,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 public class Tocken implements Serializable {
-    @Id
-    private String id;
+
+    private String email;
 
     private String code;
 
-    private Long creatingTime;
+    private Long creatingTime = System.currentTimeMillis();
 
-    public Tocken(String id, String code) {
-        this.id = id;
+    public Tocken(String email, String code) {
+        this.email = email;
         this.code = code;
-        this.creatingTime = System.currentTimeMillis();
+        //this.creatingTime = System.currentTimeMillis();
     }
-
     public long timeLife(){
         return (System.currentTimeMillis() - this.creatingTime)/1000;
     }

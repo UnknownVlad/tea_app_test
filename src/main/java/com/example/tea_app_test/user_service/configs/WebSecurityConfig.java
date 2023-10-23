@@ -29,12 +29,11 @@ public class WebSecurityConfig  {
                     .antMatchers("/").permitAll()
                     .antMatchers("/registration").permitAll()
                     .antMatchers("/hello").authenticated()
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
                 .and()
                     .formLogin()
                     .loginPage("/login")
                     .permitAll()
-
                 .and()
                     .logout().permitAll()
                     .logoutSuccessUrl("/logout");
