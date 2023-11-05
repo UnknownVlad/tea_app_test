@@ -1,8 +1,8 @@
-package com.example.tea_app_test.user_service.utils;
+package com.example.tea_app_test.utils;
 
 
 
-import com.example.tea_app_test.user_service.dto.UserDto;
+import com.example.tea_app_test.dto.UserDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

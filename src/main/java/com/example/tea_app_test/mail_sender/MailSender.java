@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.mail_sender;
+package com.example.tea_app_test.mail_sender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

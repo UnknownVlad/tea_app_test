@@ -1,9 +1,9 @@
-package com.example.tea_app_test.user_service.repository;
+package com.example.tea_app_test.repository;
 
 
-import com.example.tea_app_test.user_service.domain.Role;
-import com.example.tea_app_test.user_service.domain.User;
-import com.example.tea_app_test.user_service.dto.UserDto;
+import com.example.tea_app_test.domain.Role;
+import com.example.tea_app_test.domain.User;
+import com.example.tea_app_test.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,10 +18,8 @@ import java.util.Set;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -31,6 +29,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
 
+    public User findById(long id){
+        return userRepository.findById(id);
+    }
 
     public boolean save(UserDto user) {
         User userFromDB = userRepository.findByEmail(user.getEmail());
@@ -38,7 +39,6 @@ public class UserService implements UserDetailsService {
         if (userFromDB != null) {
             return false;
         }
-        //Делать пользователя неактивным
         userRepository.save(
                 new User(
                         user.getEmail(),
@@ -46,11 +46,18 @@ public class UserService implements UserDetailsService {
                         user.getName(),
                         user.getSurname(),
                         Set.of(Role.USER),
-                        true
+                        false
                 )
         );
-
         return true;
+    }
+
+    public void activateAccount(String email){
+        User userFromDB = userRepository.findByEmail(email);
+        if (userFromDB != null) {
+            userFromDB.setActive(true);
+            userRepository.save(userFromDB);
+        }
     }
 
 

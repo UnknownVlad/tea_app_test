@@ -1,5 +1,7 @@
-package com.example.tea_app_test.user_service.in_memoury_config;
+package com.example.tea_app_test.in_memoury_config;
 
+import net.bytebuddy.utility.RandomString;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -8,7 +10,9 @@ import java.util.HashMap;
 public class InMemouryContainer<K, V> {
     private HashMap<K, V> conteiner = new HashMap<>();
 
+
     public V get(K id){
+
         return conteiner.getOrDefault(id, null);
     }
 

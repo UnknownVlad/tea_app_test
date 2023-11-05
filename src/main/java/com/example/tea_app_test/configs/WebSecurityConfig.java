@@ -1,8 +1,8 @@
-package com.example.tea_app_test.user_service.configs;
+package com.example.tea_app_test.configs;
 
 
 
-import com.example.tea_app_test.user_service.repository.UserService;
+import com.example.tea_app_test.repository.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

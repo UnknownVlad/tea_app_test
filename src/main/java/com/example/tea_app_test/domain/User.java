@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.domain;
+package com.example.tea_app_test.domain;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String name;
     private String surname;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_email"))
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 

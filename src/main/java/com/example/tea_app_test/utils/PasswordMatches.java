@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.utils;
+package com.example.tea_app_test.utils;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

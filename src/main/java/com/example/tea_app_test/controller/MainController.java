@@ -1,21 +1,19 @@
-package com.example.tea_app_test.user_service.controller;
+package com.example.tea_app_test.controller;
 
 
-import com.example.tea_app_test.user_service.dto.UserDto;
+import com.example.tea_app_test.in_memoury_config.UTPGateway;
+import com.example.tea_app_test.in_memoury_config.UTPGatewayImpl;
+import com.example.tea_app_test.mail_sender.MailSender;
+import com.example.tea_app_test.repository.UserService;
+import com.example.tea_app_test.dto.UserDto;
 
-import com.example.tea_app_test.user_service.in_memoury_config.Tocken;
-import com.example.tea_app_test.user_service.in_memoury_config.TockenService;
-import com.example.tea_app_test.user_service.mail_sender.MailSender;
-import com.example.tea_app_test.user_service.repository.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.UUID;
 
 
 @Controller
@@ -25,7 +23,7 @@ public class MainController {
     private UserService userService;
 
     @Autowired
-    private TockenService tockenSevice;
+    private UTPGatewayImpl utpGateway;
 
     @Autowired
     private MailSender mailSender;
@@ -66,37 +64,34 @@ public class MainController {
             System.out.println("User already exist");
             return null;
         }else {
-            UUID tocken = tockenSevice.createTocken(userDto);
-
+            String code = utpGateway.generate();
+            userService.save(userDto);
+            utpGateway.save(code, userDto.getEmail());
             String message =
                     String.format("Hello, %s! \n", userDto.getName()) +
                     "Please, visit next link: \n" +
-                    "http://localhost:8080/activate/" + tocken.toString();
-
+                    "http://localhost:8080/activate/" + code;
             mailSender.send(userDto.getEmail(), "ACTIVATION CODE", message);
         }
-        tockenSevice.print();
+
 
         return "registration";
     }
 
     @GetMapping("/activate/{code}")
     public String activate(@PathVariable("code") String code){
-        System.out.println("+++++");
-
-        UUID tocken = UUID.fromString(code);
-        UserDto userDto = tockenSevice.getTocken(tocken);
-        if(userDto == null){
+        String email = utpGateway.isValid(code);
+        if(email == null){
             System.out.println("Activateion code dont actual");
-            return "";
+            return null;
         }else {
-            userService.save(userDto);
-            tockenSevice.removeTocken(tocken);
+            userService.activateAccount(email);
         }
-
         return "login";
-
     }
+
+    
+
 
 
 

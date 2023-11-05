@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.domain;
+package com.example.tea_app_test.domain;
 
 
 import org.springframework.security.core.GrantedAuthority;

@@ -1,13 +1,11 @@
-package com.example.tea_app_test.user_service.in_memoury_config;
+package com.example.tea_app_test.in_memoury_config;
 
-import com.example.tea_app_test.user_service.dto.UserDto;
+import com.example.tea_app_test.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
-import java.util.function.Predicate;
 
 
 @Slf4j

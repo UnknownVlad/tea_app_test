@@ -1,10 +1,9 @@
-package com.example.tea_app_test.user_service.dto;
+package com.example.tea_app_test.dto;
 
-import com.example.tea_app_test.user_service.utils.PasswordMatches;
-import com.example.tea_app_test.user_service.utils.ValidEmail;
+import com.example.tea_app_test.utils.PasswordMatches;
+import com.example.tea_app_test.utils.ValidEmail;
 import lombok.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 

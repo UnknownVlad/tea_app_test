@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.configs;
+package com.example.tea_app_test.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

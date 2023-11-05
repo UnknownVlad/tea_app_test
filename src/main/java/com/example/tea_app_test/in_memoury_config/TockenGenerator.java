@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service.in_memoury_config;
+package com.example.tea_app_test.in_memoury_config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;

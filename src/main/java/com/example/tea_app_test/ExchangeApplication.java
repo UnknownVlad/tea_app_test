@@ -1,4 +1,4 @@
-package com.example.tea_app_test.user_service;
+package com.example.tea_app_test;
 
 
 import org.springframework.boot.SpringApplication;
