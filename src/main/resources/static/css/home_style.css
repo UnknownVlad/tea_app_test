@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@350&display=swap');
+@import url("https://fontsforyou.com/fonts/s/Sangha.ttf");
+
+
+*,*:before,*::after{
+    box-sizing: border-box;
+}
+
+.container{
+    width: 1480px;
+    height: 100px;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.header{
+    background: #568AA7;
+}
+
+body{
+    margin: 0;
+    background: #FFF;
+    font-family: 'Jost', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header__actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header__link{
+    margin-right: 18px;
+    position: relative;
+}
+
+.header__link img{
+    display: block;
+}
+
+.header__link:last-child{
+    margin-right: 0;
+}
+
+
+.header__wrapper{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__block{
+
+
+}
+
+.nav{
+    display: flex;
+}
+
+.nav__link{
+    margin-right: 78px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+    /* transition: color .2s ease; */
+
+}
+
+
+
+.logo{
+
+}
+
+.logo img{
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(217, 217, 217, 0.18);
+    backdrop-filter: blur(2px);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.modal-window{
+    position: relative;
+    z-index: 2;
+    width: 400px;
+    height: 520px;
+    flex-shrink: 0;
+    border-radius: 22px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .4);
+    background:#FFF;
+}
+
+/* .header__link{
+    margin-right: 30;
+
+} */

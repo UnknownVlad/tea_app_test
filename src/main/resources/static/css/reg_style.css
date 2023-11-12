@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
+
+
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 1.75rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  background: linear-gradient(135deg, #5A567E, #5D1D34);
+  font-family: "Raleway", sans-serif;
+  height: 100vh;
+}
+
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center button{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+
+.modal__container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background-color:#000000; */
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: all .3s;
+  z-index: var(--z-modal);
+  visibility: hidden;
+  opacity: 0;
+
+  /*=== Effect 3 ===*/
+  /* perspective: 1000px; */
+}
+
+.modal__content{
+  width: 400px;
+  position: relative;
+  background: rgba(30, 30, 30, 0.60);
+  padding: 20px 30px;
+  border-radius: 22px;
+  transition: all .3s;
+
+  /*=== Effect 1 ===*/
+  transform: translateY(10%);
+
+  /*=== Effect 2 ===*/
+  /* transform: scale(.5) translateY(10%); */
+
+  /*=== Effect 3 ===*/
+  /* transform: rotateX(65deg) scale(.75) translateY(10%);
+  transform-origin: 50% 100%; */
+}
+
+.modal__img{
+  width: 150px;
+  margin-bottom: .75rem;
+}
+
+.modal__close{
+  display: inline-flex;
+  background-color: var(--first-color);
+  border-radius: .25rem;
+  color: #FFF;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.modal__title h1{
+  text-align: center;
+  font-size: 28px;
+  color: #FFF;
+  font-weight: 500;
+  line-height: 22px; /* 78.571% */
+  letter-spacing: -0.28px;
+}
+
+.modal__title h1.authorization{
+  margin: 70px 0px 60px;
+}
+
+.modal__title h1.registration{
+  margin: 60px 0px 35px;
+}
+
+.modal__description{
+  margin-bottom: 1.5rem;
+}
+
+.modal__button-width{
+  width: 100%;
+}
+
+.modal__button-link{
+  display: block;
+  margin: 1rem auto 0;
+  background-color: transparent;
+  /* color: var(--first-color); */
+  font-weight: 500;
+}
+
+.show-modal{
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-modal .modal__content{
+  /*=== Effect 1 ===*/
+  transform: translateY(0);
+
+  /*=== Effect 2 ===*/
+  /* transform: scale(1) translateY(0); */
+
+  /*=== Effect 3 ===*/
+  /* transform: rotateX(0) scale(1) translateY(0); */
+}
+
+
+@media screen and (min-width: 576px){
+  .modal__content{
+    margin: auto;
+    width: 400px;
+    border-radius: 1.25rem;
+  }
+
+  .modal__img{
+    width: 170px;
+  }
+}
+
+
+.form-element{
+	position: relative;
+}
+
+.modal__container .modal__content .form-element{
+  margin: 0px 25px;
+}
+
+.modal__container .modal__content .form-element label{
+  font-size: 14px;
+  color: #FFF;
+}
+
+.modal__container .modal__content .form-element input[type="checkbox"]{
+  margin: 6px 14px 36px 0px;
+}
+
+.modal__container .modal__content .form-element input[type="text"],
+.modal__container .modal__content .form-element input[type="password"]{
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  padding: 15px 0px 15px 23px;
+  outline: none;
+  border: 1.4px solid rgba(255, 255, 255, 0.12);
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(5px);
+  font-family: "Raleway", sans-serif;
+  /* font-size: 14px; */
+  font-weight: 500;
+  color: #FFF
+}
+
+/* .modal__container .modal__content .form-element input[type="button"]{
+  cursor: pointer;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: #FFF;
+
+} */
+
+
+.modal__container .modal__content .form-element button{
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 39px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFF;
+  cursor: pointer;
+
+}
+
+.modal__container .modal__content .form-element button.enter{
+  background: rgba(30, 30, 30, 0.50);
+  margin: 35px 0px 13px;
+}
+
+.modal__container .modal__content .form-element button.registration_1{
+  background: #000000;
+  margin-bottom: 44px;
+}
+
+.modal__container .modal__content .form-element button.registration_2{
+  background: #000000;
+  margin: 40px 0px 64px;
+}
+
+.modal__container .modal__content .form-element a{
+  display: block;
+  margin: 5px 0px 5px 205px;
+  font-family: "Raleway", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #C9C9C9;
+  text-decoration: none;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #C9C9C9;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #C9C9C9;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    #C9C9C9;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    #C9C9C9;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:    #C9C9C9;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+ color:    #C9C9C9;
+}
+
+/* .password_input_container button {
+  cursor: pointer;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: #FFF;
+} */
+
+/* .password_input_container input[type="password"]:focus,
+.password_input_container input[type="password"]:not(:placeholder-shown){
+    top: 0;
+    font-size: 8px;
+    z-index: 1;
+}
+
+
+.password_input_container input[type="password"]:focus {
+  border-color: #FFF;
+} */
