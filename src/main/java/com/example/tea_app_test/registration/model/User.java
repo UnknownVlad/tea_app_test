@@ -1,4 +1,4 @@
-package com.example.tea_app_test.domain;
+package com.example.tea_app_test.registration.model;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

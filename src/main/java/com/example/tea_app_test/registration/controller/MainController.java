@@ -1,18 +1,20 @@
-package com.example.tea_app_test.controller;
+package com.example.tea_app_test.registration.controller;
 
 
-import com.example.tea_app_test.in_memoury_config.UTPGateway;
-import com.example.tea_app_test.in_memoury_config.UTPGatewayImpl;
+import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
 import com.example.tea_app_test.repository.UserService;
-import com.example.tea_app_test.dto.UserDto;
+import com.example.tea_app_test.registration.model.UserDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 
@@ -52,26 +54,29 @@ public class MainController {
         return "registration";
     }
     */
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
     }
 
-
     @PostMapping("/registration")
-    public String registration(@Valid UserDto userDto){
+    public String registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {
+
+        /*System.out.println(bindingResult.toString());
+        System.out.println("registration");
+        System.out.println(userDto.toString());*/
         if(userService.findByEmail(userDto.getEmail()) != null){
-            System.out.println("User already exist");
-            return null;
+            bindingResult.addError(new ObjectError("existing_user", "user already exist"));
+            return "registration";
         }else {
             String code = utpGateway.generate();
             userService.save(userDto);
             utpGateway.save(code, userDto.getEmail());
             String message =
-                    String.format("Hello, %s! \n", userDto.getName()) +
-                    "Please, visit next link: \n" +
-                    "http://localhost:8080/activate/" + code;
-            mailSender.send(userDto.getEmail(), "ACTIVATION CODE", message);
+                    "<html><body><a href='http://localhost:8080/activate/%s'>Visit this link</a></body></html>".formatted(code);
+
+            mailSender.sendHtmlMessage(userDto.getEmail(), "ACTIVATION CODE", message);
         }
 
 
@@ -89,14 +94,5 @@ public class MainController {
         }
         return "login";
     }
-
-    
-
-
-
-
-
-
-
 
 }

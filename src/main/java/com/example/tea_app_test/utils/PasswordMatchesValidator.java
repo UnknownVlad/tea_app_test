@@ -2,7 +2,7 @@ package com.example.tea_app_test.utils;
 
 
 
-import com.example.tea_app_test.dto.UserDto;
+import com.example.tea_app_test.registration.model.UserDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

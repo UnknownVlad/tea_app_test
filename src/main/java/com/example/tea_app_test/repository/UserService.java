@@ -1,9 +1,9 @@
 package com.example.tea_app_test.repository;
 
 
-import com.example.tea_app_test.domain.Role;
-import com.example.tea_app_test.domain.User;
-import com.example.tea_app_test.dto.UserDto;
+import com.example.tea_app_test.registration.model.Role;
+import com.example.tea_app_test.registration.model.User;
+import com.example.tea_app_test.registration.model.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

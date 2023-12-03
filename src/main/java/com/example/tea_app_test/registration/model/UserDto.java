@@ -1,4 +1,4 @@
-package com.example.tea_app_test.dto;
+package com.example.tea_app_test.registration.model;
 
 import com.example.tea_app_test.utils.PasswordMatches;
 import com.example.tea_app_test.utils.ValidEmail;

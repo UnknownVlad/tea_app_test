@@ -1,4 +1,4 @@
-package com.example.tea_app_test.in_memoury_config;
+package com.example.tea_app_test.registration.in_memoury_config;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
