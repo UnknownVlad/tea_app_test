@@ -1,0 +1,94 @@
+  .nav-links {
+    justify-content:space-around;
+    text-transform: uppercase;
+    /* position: absolute; */
+    position: fixed;
+    /* left: 0;
+    top: 9vh;
+    min-height:80vh; */
+    background: #34443d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    /* width: 20%;
+    margin: 0; */
+    /* padding: 0; */
+    width: 320px;
+    min-width: 320px;
+    /* фиксируем и выставляем высоту панели на максимум */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* сдвигаем (прячем) панель относительно левого края страницы */
+    /* внутренние отступы */
+    padding: 15px 20px;
+    transform: translateX(-100%);
+    /* transition:All 0.5s ease-in; */
+    transition: 0.5s;
+    /* -webkit-transition: left 0.3s;
+    -moz-transition: left 0.3s;
+    transition: left 0.3s; */
+    z-index: 2000;
+
+}
+
+/* .title h1{
+	color: #fff;
+	margin-bottom: 50px;
+  text-transform: uppercase;
+} */
+
+.nav-links a{
+  opacity: 0;
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  border-bottom:2px solid transparent;
+  transition:0.5s ease;
+  transform: translateX(0%);
+}
+.nav-links a:hover{
+    color:rgb(150, 160, 143);
+    letter-spacing: 5px;
+}
+.burger{
+    display: block;
+}
+.burger div{
+  border-radius: 10px;
+  width: 25px;
+  height: 2px;
+  background: #000;
+  margin: 6px;
+  transition:all 0.5s ease;
+}
+
+.nav-active{
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.toggle .line1{
+   transform: rotate(-45deg) translate(-5px,6px );
+}
+.toggle .line2{
+   opacity: 0;
+}
+.toggle .line3{
+   transform: rotate(45deg) translate(-5px,-6px );
+}
+
+

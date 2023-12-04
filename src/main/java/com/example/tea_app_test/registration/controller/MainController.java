@@ -57,7 +57,7 @@ public class MainController {
 
     @GetMapping("/registration")
     public String registration() {
-        return "registration";
+        return "index";
     }
 
     @PostMapping("/registration")
@@ -68,7 +68,7 @@ public class MainController {
         System.out.println(userDto.toString());*/
         if(userService.findByEmail(userDto.getEmail()) != null){
             bindingResult.addError(new ObjectError("existing_user", "user already exist"));
-            return "registration";
+            return "index";
         }else {
             String code = utpGateway.generate();
             userService.save(userDto);
@@ -80,7 +80,7 @@ public class MainController {
         }
 
 
-        return "registration";
+        return "index";
     }
 
     @GetMapping("/activate/{code}")
@@ -92,7 +92,7 @@ public class MainController {
         }else {
             userService.activateAccount(email);
         }
-        return "login";
+        return "index";
     }
 
 }
