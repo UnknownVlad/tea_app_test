@@ -19,7 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig  {
     @Autowired
     UserService userService;
-
+    @Autowired
+    private CustomAuthenticationFailureHandler failureHandler;
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -33,6 +34,7 @@ public class WebSecurityConfig  {
                 .and()
                     .formLogin()
                     .loginPage("/login")
+                    .failureHandler(failureHandler)
                     .permitAll()
                 .and()
                     .logout().permitAll()
