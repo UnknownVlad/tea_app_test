@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/authorization.css" rel="stylesheet" type="text/css" media="all" />
-<title>main</title>
+    <title>Ледяной Феникс</title>
 </head>
 <body>
 
@@ -19,11 +19,8 @@
     <header class="header">
         <div class="header__tabs__nav">
                 <div class="navbar">
-                    <!-- <div class="nav-container"> -->
                     <nav class="header__nav">
-                        <!-- <div class="toggle"></div> -->
-                        <!-- <div class="title"><h1>Каталог</h1></div> -->
-                        <ul class="nav-links"> 
+                        <ul class="nav-links">
                             <a href="#">Китайский чай</a>
                             <a href="#">Травяные чаи</a> 
                             <a href="#">Посуда для чайной церемонии</a>
@@ -34,7 +31,6 @@
                           <div class="line3"></div>
                         </div>
                     </nav>
-                    <!-- </div> -->
                 </div>
             
             <a href="#" class="header__logo">
@@ -78,77 +74,7 @@
     </div>
 </section>
 
-    <div class="modal__container" id="modal-container_1">
-        <div class="modal__content">
-            <div class="modal__close close-modal" title="Close">
-                <i class='bx bx-x'></i>
-            </div>
-            <div class="modal__title">
-                <h1 class="authorization">Авторизация</h1>
-            </div>
-
-            <form th:action="@{/login}" method="post">
-            <div class="form-element">
-                <input type="text" name="username" id="email_auth" placeholder="E-mail">
-            </div>
-            <div class="form-element">
-                <input type="password" name="password" id="password-auth" placeholder="Пароль">
-            </div>
-            <div class="form-element">
-                <a href="#">Забыл пароль</a>
-            </div>
-            <div class="form-element">
-                <button class="enter" type="submit">Войти</button>
-            </div>
-            </form>
-            <div class="form-element">
-                <button class="registration_1" id="open-modal_2">Зарегистрироваться</button>
-            </div>
-
-
-        </div>
-    </div>
-    <div class="modal__container" id="modal-container_2">
-        <div class="modal__content">
-            <div class="modal__close close-modal" title="Close">
-                <i class='bx bx-x'></i>
-            </div>
-        
-            <div class="modal__title">
-                <h1 class="registration">Регистрация</h1>
-            </div>
-            <form th:action="@{/registration}" method="post">
-            <div class="form-element">
-                <input type="text" name="name" id="name" placeholder="Имя">
-            </div>
-            <div class="form-element">
-                <input type="text" name="surname" id="surname" placeholder="Фамилия">
-            </div>
-            <div class="form-element">
-                <input type="text" name="email" id="email" placeholder="E-mail">
-            </div>
-            <div class="form-element">
-                <input type="password" name="password" id="password" placeholder="Пароль">
-            </div>
-            <div class="form-element">
-                <input type="password" name="matchingPassword" id="repeat_password" placeholder="Повторите пароль">
-            </div>
-        
-            <!-- <div class="form-element">
-                <a href="#">Забыл пароль</a>
-            </div> -->
-            <!-- <div class="form-element">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Запомнить меня</label>
-            </div> -->
-            <div class="form-element">
-                <button class="registration_2" type="submit" name="action" value="add">Зарегистрироваться</button>
-            </div>
-            </form>
-        </div>
-    </div>
-    
-
+    <div th:replace="authorization :: div.modal__container"></div>
         
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
