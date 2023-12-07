@@ -1,6 +1,7 @@
 package com.example.tea_app_test.registration.controller;
 
 
+import com.example.tea_app_test.registration.errors.UserExistException;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
 import com.example.tea_app_test.repository.UserService;
@@ -9,11 +10,7 @@ import com.example.tea_app_test.registration.model.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -66,22 +63,12 @@ public class MainController {
 
     @PostMapping("/registration")
     public String registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {
-        /*
-        Field error in object 'userDto' on field 'name': rejected value []; codes [NotEmpty.userDto.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.name,name]; arguments []; default message [name]]; default message [не должно быть пустым]
-        Field error in object 'userDto' on field 'password': rejected value []; codes [NotEmpty.userDto.password,NotEmpty.password,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.password,password]; arguments []; default message [password]]; default message [не должно быть пустым]
-        Field error in object 'userDto' on field 'email': rejected value []; codes [ValidEmail.userDto.email,ValidEmail.email,ValidEmail.java.lang.String,ValidEmail]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.email,email]; arguments []; default message [email]]; default message [Invalid email]
-        Field error in object 'userDto' on field 'email': rejected value []; codes [NotEmpty.userDto.email,NotEmpty.email,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.email,email]; arguments []; default message [email]]; default message [не должно быть пустым]
-        Field error in object 'userDto' on field 'surname': rejected value []; codes [NotEmpty.userDto.surname,NotEmpty.surname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.surname,surname]; arguments []; default message [surname]]; default message [не должно быть пустым]
-        Field error in object 'userDto' on field 'matchingPassword': rejected value []; codes [NotEmpty.userDto.matchingPassword,NotEmpty.matchingPassword,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.matchingPassword,matchingPassword]; arguments []; default message [matchingPassword]]; default message [не должно быть пустым]
-        Field error in object 'userDto' on field 'exist': rejected value [null]; codes []; arguments []; default message [user already exist]
-
-        * */
-
-        if (bindingResult.hasErrors()){
+        /*if (bindingResult.hasErrors()){
             return "index";
-        } else if(userService.findByEmail(userDto.getEmail()) != null){
-            bindingResult.addError(new FieldError("userDto", "exist", "user already exist"));
-            return "index";
+        } else */if(userService.findByEmail(userDto.getEmail()) != null){
+            throw new UserExistException("user already exist");
+            /*bindingResult.addError(new FieldError("userDto", "exist", "user already exist"));
+            return "index";*/
         }else {
             String code = utpGateway.generate();
             userService.save(userDto);
@@ -91,7 +78,6 @@ public class MainController {
 
             mailSender.sendHtmlMessage(userDto.getEmail(), "ACTIVATION CODE", message);
         }
-
 
         return "index";
     }
