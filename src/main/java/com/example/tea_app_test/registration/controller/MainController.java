@@ -1,7 +1,8 @@
 package com.example.tea_app_test.registration.controller;
 
 
-import com.example.tea_app_test.registration.errors.UserExistException;
+import com.example.tea_app_test.custom_exception.Response;
+import com.example.tea_app_test.custom_exception.UserExistException;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
 import com.example.tea_app_test.repository.UserService;
@@ -10,6 +11,7 @@ import com.example.tea_app_test.registration.model.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,6 +62,27 @@ public class MainController {
     public String registration(UserDto userDto) {
         return "index";
     }
+
+//    @PostMapping("/registration")
+//    public String registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {
+//        /*if (bindingResult.hasErrors()){
+//            return "index";
+//        } else */if(userService.findByEmail(userDto.getEmail()) != null){
+//            throw new UserExistException("user exist");
+//            /*bindingResult.addError(new FieldError("userDto", "exist", "user already exist"));
+//            return "index";*/
+//        }else {
+//            String code = utpGateway.generate();
+//            userService.save(userDto);
+//            utpGateway.save(code, userDto.getEmail());
+//            String message =
+//                    "<html><body><a href='http://localhost:8080/activate/%s'>Visit this link</a></body></html>".formatted(code);
+//
+//            mailSender.sendHtmlMessage(userDto.getEmail(), "ACTIVATION CODE", message);
+//        }
+//
+//        return "index";
+//    }
 
     @PostMapping("/registration")
     public String registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {

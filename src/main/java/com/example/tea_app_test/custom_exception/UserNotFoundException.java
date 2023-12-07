@@ -1,4 +1,4 @@
-package com.example.tea_app_test.registration.errors;
+package com.example.tea_app_test.custom_exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

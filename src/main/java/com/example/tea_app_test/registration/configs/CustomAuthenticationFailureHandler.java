@@ -1,22 +1,15 @@
 package com.example.tea_app_test.registration.configs;
 
-import com.example.tea_app_test.registration.errors.UserNotFoundException;
-import org.springframework.security.authentication.BadCredentialsException;
+import com.example.tea_app_test.custom_exception.UserNotFoundException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 @Component
