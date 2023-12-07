@@ -21,6 +21,7 @@ public class WebSecurityConfig  {
     UserService userService;
     @Autowired
     private CustomAuthenticationFailureHandler failureHandler;
+
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -34,12 +35,11 @@ public class WebSecurityConfig  {
                 .and()
                     .formLogin()
                     .loginPage("/login")
-                    .failureHandler(failureHandler)
+                .failureHandler(failureHandler)
                     .permitAll()
                 .and()
                     .logout().permitAll()
                     .logoutSuccessUrl("/logout");
-
 
         return httpSecurity.build();
     }

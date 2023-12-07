@@ -1,15 +1,12 @@
 package com.example.tea_app_test.registration.configs;
 
-import com.example.tea_app_test.custom_exception.UserNotFoundException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 
 
 @Component
@@ -20,21 +17,41 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
 
-        BindingResult errors = new MapBindingResult(Collections.emptyMap(), "LoginForm");
 
-        errors.reject("error", "Invalid username or password");
+        ErrorResponse errorResponse = new ErrorResponse("Authentication failed", HttpServletResponse.SC_UNAUTHORIZED);
 
-        String referer = request.getHeader("Referer");
 
-        request.getSession().setAttribute("errors", errors);
-        response.sendRedirect(referer);
 
-        throw new UserNotFoundException("not valid data");
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write(errorResponse.toJson());
+
 
 
 
     }
+    private static class ErrorResponse {
+        private final String message;
+        private final int status;
 
+        public ErrorResponse(String message, int status) {
+            this.message = message;
+            this.status = status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        // Дополнительные методы, если необходимо
+        public String toJson() {
+            // Пример преобразования объекта в JSON
+            return "{\"message\":\"" + message + "\",\"status\":" + status + "}";
+        }
+    }
     /*private BindingResult createFakeBindingResult(String errorMessage) {
         MyError myError = new MyError("loginError", errorMessage);
         List<ObjectError> errors = Collections.singletonList(new ObjectError("loginError", myError.getMessage()));
