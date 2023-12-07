@@ -1,5 +1,6 @@
 package com.example.tea_app_test.registration.configs;
 
+import com.example.tea_app_test.registration.errors.UserNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -34,6 +35,9 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
         request.getSession().setAttribute("errors", errors);
         response.sendRedirect(referer);
+
+        throw new UserNotFoundException("not valid data");
+
 
 
     }

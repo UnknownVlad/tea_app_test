@@ -66,7 +66,7 @@ public class MainController {
         /*if (bindingResult.hasErrors()){
             return "index";
         } else */if(userService.findByEmail(userDto.getEmail()) != null){
-            throw new UserExistException("user already exist");
+            throw new UserExistException("user exist");
             /*bindingResult.addError(new FieldError("userDto", "exist", "user already exist"));
             return "index";*/
         }else {
