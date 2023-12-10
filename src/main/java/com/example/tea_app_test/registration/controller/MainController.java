@@ -10,6 +10,7 @@ import com.example.tea_app_test.repository.UserService;
 import com.example.tea_app_test.registration.model.UserDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -70,11 +71,11 @@ public class MainController {
 
 
     @PostMapping("/registration")
-    public String registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {
+    public ResponseEntity<String> registration(@Valid UserDto userDto, BindingResult bindingResult) throws MessagingException {
         if (bindingResult.hasErrors()){
             throw new NotValidFields("not valid fields");
         } else if(userService.findByEmail(userDto.getEmail()) != null){
-            throw new UserExistException("user exist");
+            throw new UserExistException("Пользователь с этим адресом электронной почты уже существует");
         }else {
             String code = utpGateway.generate();
             userService.save(userDto);
@@ -84,8 +85,7 @@ public class MainController {
 
             mailSender.sendHtmlMessage(userDto.getEmail(), "ACTIVATION CODE", message);
         }
-
-        return "index";
+        return ResponseEntity.ok("Регистрация завершена успешно");
     }
 
     @GetMapping("/activate/{code}")
