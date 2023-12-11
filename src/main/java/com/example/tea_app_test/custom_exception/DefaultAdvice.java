@@ -32,13 +32,4 @@ public class DefaultAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-
-
-    /*@Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable
-            (HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        Response response = new Response(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
-        System.out.println(status);
-        return new ResponseEntity<>(response, status);
-    }*/
 }

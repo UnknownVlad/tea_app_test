@@ -1,4 +1,4 @@
-package com.example.tea_app_test.registration.configs;
+package com.example.tea_app_test.registration.configs.sesurity;
 
 
 

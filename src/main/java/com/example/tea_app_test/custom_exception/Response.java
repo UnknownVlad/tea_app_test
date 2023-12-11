@@ -10,4 +10,8 @@ import org.springframework.http.HttpStatus;
 public class Response {
     private String message;
     private Integer status;
+
+    public String toJson() {
+        return "{\"message\":\"" + message + "\",\"status\":" + status + "}";
+    }
 }
