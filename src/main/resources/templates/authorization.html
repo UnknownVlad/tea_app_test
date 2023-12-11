@@ -28,7 +28,8 @@
                 <input type="text" name="username" id="email_auth" placeholder="E-mail">
             </div>
             <div class="form-element">
-                <input type="password" name="password" id="password-auth" placeholder="Пароль">
+                <input type="password" name="password" id="password_auth" placeholder="Пароль">
+                <a href="#" class="password-control" onclick="return show_hide_password_auth(this);"></a>
             </div>
             <div class="form-element">
                 <a href="#">Забыл пароль</a>
@@ -69,6 +70,7 @@
                 </div>
                 <div class="form-element">
                     <input type="password" id="password" name="password" placeholder="Пароль" readonly onfocus="this.removeAttribute('readonly');">
+                    <a href="#" class="password-control" onclick="return show_hide_password_reg(this);"></a>
                     <small></small>
                 </div>
                 <div class="form-element">

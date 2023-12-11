@@ -45,3 +45,28 @@ function closeModal_2(){
     modalContainer.classList.remove('show-modal')
 }
 closeBtn_2.forEach(c => c.addEventListener('click', closeModal_2))
+
+/*=============== PASSWORD HIDE ===============*/
+function show_hide_password_reg(target){
+	var password = document.querySelector('#password');
+	if (password.getAttribute('type') == 'password') {
+		target.classList.add('view');
+		password.setAttribute('type', 'text');
+	} else {
+		target.classList.remove('view');
+		password.setAttribute('type', 'password');
+	}
+	return false;
+}
+
+function show_hide_password_auth(target){
+    var password_auth = document.querySelector('#password_auth');
+	if (password_auth.getAttribute('type') == 'password') {
+		target.classList.add('view');
+		password_auth.setAttribute('type', 'text');
+	} else {
+		target.classList.remove('view');
+		password_auth.setAttribute('type', 'password');
+	}
+	return false;
+}
