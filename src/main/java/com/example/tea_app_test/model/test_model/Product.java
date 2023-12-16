@@ -22,4 +22,9 @@ public class Product {
 
 
     private List<Review> reviews;
+
+    public Double getRate(){
+        //выссчитать рейтинг из отзывов
+        return null;
+    }
 }
