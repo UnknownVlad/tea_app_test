@@ -2,7 +2,7 @@ package com.example.tea_app_test.repository;
 
 
 
-import com.example.tea_app_test.registration.model.User;
+import com.example.tea_app_test.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
