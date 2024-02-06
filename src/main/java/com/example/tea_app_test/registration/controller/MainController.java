@@ -4,10 +4,11 @@ package com.example.tea_app_test.registration.controller;
 import com.example.tea_app_test.custom_exception.NotValidFields;
 import com.example.tea_app_test.custom_exception.Response;
 import com.example.tea_app_test.custom_exception.UserExistException;
+import com.example.tea_app_test.model.user.UserDto;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
 import com.example.tea_app_test.repository.UserService;
-import com.example.tea_app_test.registration.model.UserDto;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

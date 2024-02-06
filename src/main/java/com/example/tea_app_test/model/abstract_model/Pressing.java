@@ -1,4 +1,4 @@
-package com.example.tea_app_test.model.test_model;
+package com.example.tea_app_test.model.abstract_model;
 
 public enum Pressing {
 

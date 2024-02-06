@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
+/*
 @Entity
 @Table(name = "reviews")
 @AllArgsConstructor
@@ -40,3 +41,4 @@ public class Review {
     private LocalDate dateOfPublication;
 
 }
+*/
