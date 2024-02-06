@@ -9,19 +9,16 @@ import java.util.HashSet;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("tea")
-public class Tea extends Product{
-
+@DiscriminatorValue("test")
+public class Test extends Product{
 
     //Остальные атрибуты
-    @OneToMany(mappedBy = "tea", cascade = CascadeType.ALL)
-    private Collection<TeaPrice> prices;
+    private String test;
 
-    public Tea(String title, String description, List<Review> reviews) {
+    public Test(String title, String description, List<Review> reviews) {
         super(title, description, reviews);
-        prices = new HashSet<>();
     }
 
-    public Tea() {
+    public Test() {
     }
 }

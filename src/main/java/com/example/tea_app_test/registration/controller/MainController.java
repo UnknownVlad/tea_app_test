@@ -4,6 +4,8 @@ package com.example.tea_app_test.registration.controller;
 import com.example.tea_app_test.custom_exception.NotValidFields;
 import com.example.tea_app_test.custom_exception.Response;
 import com.example.tea_app_test.custom_exception.UserExistException;
+import com.example.tea_app_test.model.abstract_model.ProductRepo;
+import com.example.tea_app_test.model.abstract_model.Test;
 import com.example.tea_app_test.model.user.UserDto;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
@@ -62,9 +64,13 @@ public class MainController {
     */
 
 
-
+    @Autowired
+    private ProductRepo productRepo;
     @GetMapping("/registration")
     public String registration(UserDto userDto) {
+        productRepo.save(
+                new Test()
+        );
         return "index";
     }
 

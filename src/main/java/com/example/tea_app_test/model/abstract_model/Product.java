@@ -19,6 +19,10 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "product", insertable = false, updatable = false)
+    private String product;
+
     private String title;
     private String description;
 
