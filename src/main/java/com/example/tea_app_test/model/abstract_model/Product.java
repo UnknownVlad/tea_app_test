@@ -26,11 +26,8 @@ public class Product {
     private String title;
     private String description;
 
-    //private List<Base64> photos;
 
-    //private double rate;
-    ///Скорректировать
-    @OneToMany
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
 
     public Product(String title, String description, List<Review> reviews) {
