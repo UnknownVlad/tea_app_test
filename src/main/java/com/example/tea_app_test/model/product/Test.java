@@ -11,8 +11,8 @@ public class Test extends Product{
     //Остальные атрибуты
     private String test;
 
-    public Test(String title, String description, List<Review> reviews) {
-        super(title, description, reviews);
+    public Test(String title, String description, boolean availability,  List<Review> reviews) {
+        super(title, description, availability, reviews);
     }
 
     public Test() {
