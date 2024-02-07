@@ -1,10 +1,12 @@
 package com.example.tea_app_test.model.user;
 
+import com.example.tea_app_test.model.abstract_model.Review;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -32,6 +34,10 @@ public class User implements UserDetails {
 
     private boolean active;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Review> reviews = new ArrayList<>();
+
+
     public User(String email, String password, String name, String surname, Set<Role> roles, boolean active) {
         this.email = email;
         this.password = password;
@@ -39,6 +45,7 @@ public class User implements UserDetails {
         this.surname = surname;
         this.roles = roles;
         this.active = active;
+
     }
 
     @Override

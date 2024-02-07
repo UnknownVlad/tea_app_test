@@ -24,21 +24,31 @@ public class Review {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     //@OneToOne(mappedBy = "rewiews", cascade = CascadeType.ALL)
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
     private User author;
+
+    @NotNull
     @Min(value = 1)
     @Max(value = 5)
-    @NotNull
-    @NotEmpty
-    private int rate;
+    private Integer rate;
 
     private String description;
 
-    //Нужно юзать sql.Date с ней проблем меньше
     private Date dateOfPublication;
+
+    public Review(int rate) {
+        this.rate = rate;
+    }
 
     /*public Review(User author, int rate, String description, Date dateOfPublication) {
         this.author = author;

@@ -5,7 +5,9 @@ import com.example.tea_app_test.custom_exception.NotValidFields;
 import com.example.tea_app_test.custom_exception.Response;
 import com.example.tea_app_test.custom_exception.UserExistException;
 import com.example.tea_app_test.model.abstract_model.ProductRepo;
+import com.example.tea_app_test.model.abstract_model.Review;
 import com.example.tea_app_test.model.abstract_model.Test;
+import com.example.tea_app_test.model.user.User;
 import com.example.tea_app_test.model.user.UserDto;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.mail_sender.MailSender;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
