@@ -1,4 +1,6 @@
-package com.example.tea_app_test.model.product;
+package com.example.tea_app_test.model.product.tea;
+
+import com.example.tea_app_test.model.product.tea.Tea;
 
 import javax.persistence.*;
 
