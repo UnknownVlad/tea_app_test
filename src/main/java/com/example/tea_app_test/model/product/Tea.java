@@ -1,4 +1,4 @@
-package com.example.tea_app_test.model.abstract_model;
+package com.example.tea_app_test.model.product;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -17,8 +17,8 @@ public class Tea extends Product{
     @OneToMany(mappedBy = "tea", cascade = CascadeType.ALL)
     private Collection<TeaPrice> prices;
 
-    public Tea(String title, String description, List<Review> reviews) {
-        super(title, description, reviews);
+    public Tea(String title, String description, boolean availability, List<Review> reviews, Collection<TeaPrice> prices) {
+        super(title, description, availability, reviews);
         prices = new HashSet<>();
     }
 

@@ -1,6 +1,6 @@
 package com.example.tea_app_test.model.user;
 
-import com.example.tea_app_test.model.abstract_model.Review;
+import com.example.tea_app_test.model.product.Review;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

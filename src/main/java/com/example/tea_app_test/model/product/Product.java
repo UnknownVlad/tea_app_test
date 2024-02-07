@@ -1,12 +1,10 @@
-package com.example.tea_app_test.model.abstract_model;
+package com.example.tea_app_test.model.product;
 
-import com.sun.xml.bind.v2.TODO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Base64;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,14 +24,17 @@ public class Product {
 
     private String title;
     private String description;
+    private boolean availability;
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Review> reviews;
 
-    public Product(String title, String description, List<Review> reviews) {
+    public Product(String title, String description, boolean availability, List<Review> reviews) {
         this.title = title;
         this.description = description;
+        this.availability = availability;
         this.reviews = reviews;
     }
+
 }

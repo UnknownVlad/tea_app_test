@@ -2,7 +2,7 @@ package com.example.tea_app_test.registration.configs.sesurity;
 
 
 
-import com.example.tea_app_test.repository.UserService;
+import com.example.tea_app_test.model.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.tea_app_test.repository;
+package com.example.tea_app_test.model.user;
 
 
 

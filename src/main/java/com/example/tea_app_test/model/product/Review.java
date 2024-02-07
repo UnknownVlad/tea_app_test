@@ -1,19 +1,14 @@
-package com.example.tea_app_test.model.abstract_model;
+package com.example.tea_app_test.model.product;
 
 import com.example.tea_app_test.model.user.User;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.time.LocalDate;
 
 
 @Entity

@@ -1,16 +1,14 @@
 package com.example.tea_app_test.registration.controller;
 
-import com.example.tea_app_test.model.abstract_model.ProductRepo;
-import com.example.tea_app_test.model.abstract_model.Review;
-import com.example.tea_app_test.model.abstract_model.ReviewRepo;
+import com.example.tea_app_test.model.product.ProductRepo;
+import com.example.tea_app_test.model.product.Review;
+import com.example.tea_app_test.model.product.ReviewRepo;
 import com.example.tea_app_test.model.user.User;
-import com.example.tea_app_test.repository.UserRepository;
-import com.example.tea_app_test.repository.UserService;
+import com.example.tea_app_test.model.user.UserRepository;
+import com.example.tea_app_test.model.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 

@@ -1,4 +1,4 @@
-package com.example.tea_app_test.model.abstract_model;
+package com.example.tea_app_test.model.product;
 
 import javax.persistence.*;
 
@@ -9,7 +9,8 @@ public class TeaPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Double weight;
+//    private Double weight;
+    private Integer gram;
     private Double price;
 
     @ManyToOne

@@ -2,8 +2,8 @@ package com.example.tea_app_test;
 
 import com.example.tea_app_test.model.user.Role;
 import com.example.tea_app_test.model.user.User;
-import com.example.tea_app_test.repository.UserRepository;
-import com.example.tea_app_test.repository.UserService;
+import com.example.tea_app_test.model.user.UserRepository;
+import com.example.tea_app_test.model.user.UserService;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

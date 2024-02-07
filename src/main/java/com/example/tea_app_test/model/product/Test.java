@@ -1,11 +1,7 @@
-package com.example.tea_app_test.model.abstract_model;
+package com.example.tea_app_test.model.product;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 @Entity
