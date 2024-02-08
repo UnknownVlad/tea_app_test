@@ -21,26 +21,25 @@ public class Tea extends Product {
     private String country;
     private String province; //провинция
     private String city; // город(столица)
-    private boolean citySettlement; // город/поселение/деревня
-    private boolean factoryFarm; // заводской/фермерский
-    private boolean additionalProcessing; // чистый/GABA
+    private Location location; // город/поселение/деревня
+    private Production production; // заводской/фермерский
+    private AdditionalProcessing additionalProcessing; // чистый/GABA
     private String variety; //сорт
-
-    // вместо boolean думаю будет лучше enum
+    private Pressing pressing; //прессовка
 
     @OneToMany(mappedBy = "tea", cascade = CascadeType.ALL)
     private Collection<TeaPrice> prices; // тут ты как-то цену хотел сделать (граммы/пресовка)
 
     public Tea(String title, String description, boolean availability, List<Review> reviews, TeaType teaType,
-               String province, String city, boolean citySettlement, boolean factoryFarm,
-               boolean additionalProcessing, String variety, Collection<TeaPrice> prices) {
+               String province, String city, Location location, Production production,
+               AdditionalProcessing additionalProcessing, String variety, Collection<TeaPrice> prices) {
         super(title, description, availability, reviews);
         this.teaType = teaType;
         this.country = "Китай";
         this.province = province;
         this.city = city;
-        this.citySettlement = citySettlement;
-        this.factoryFarm = factoryFarm;
+        this.location = location;
+        this.production = production;
         this.additionalProcessing = additionalProcessing;
         this.variety = variety;
         this.prices = prices;
