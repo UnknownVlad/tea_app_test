@@ -1,16 +1,70 @@
-<html>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-  <div>
-    <form method="post">
-      <input type="text" name="email" placeholder="email" /><br></br>
-      <input type="text" name="password" placeholder="password"><br></br>
-      <input type="text" name="name" placeholder="name"><br></br>
-      <input type="text" name="surname" placeholder="surname"><br></br>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-      <button type="submit">Добавить</button><br></br>
-    </form>
-  </div>
+        <link rel="stylesheet" href="css/reg_style.css">
 
-</body>
+        <title>Registration</title>
+    </head>
+    <body>
+        <section class="modal container">
+            <!-- <a href="#" class="modal__button" id="open-modal">
+                Кнопочка
+            </a> -->
+            <div class="center">
+                <button type="submit" class="modal__button" id="open-modal_2">
+                    <img src="img/profile.png" alt="profile">
+                </button>
+            </div>
+
+            <div class="modal__container" id="modal-container_2">
+                <div class="modal__content">
+                    <div class="modal__close close-modal" title="Close">
+                        <i class='bx bx-x'></i>
+                    </div>
+
+                    <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                    <div class="modal__title">
+                        <h1 class="registration">Регистрация</h1>
+                    </div>
+
+                    <form method="post" >
+                    <div class="form-element">
+                        <input type="text" name="name" id="name" placeholder="Имя">
+                    </div>
+                    <div class="form-element">
+                        <input type="text" name="surname" id="surname" placeholder="Фамилия">
+                    </div>
+                    <div class="form-element">
+                        <input type="text" name="email" id="email" placeholder="E-mail">
+                    </div>
+                    <div class="form-element">
+                        <input type="password" name="password" id="password" placeholder="Пароль">
+                    </div>
+                    <div class="form-element">
+                        <input type="password" name="matchingPassword" id="repeat_password" placeholder="Повторите пароль">
+                    </div>
+
+                    <!-- <div class="form-element">
+                        <a href="#">Забыл пароль</a>
+                    </div> -->
+                    <!-- <div class="form-element">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Запомнить меня</label>
+                    </div> -->
+                    <div class="form-element">
+                        <button class="registration_2" type="submit" name="action" value="add">Зарегистрироваться</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/main.js"></script>
+    </body>
 </html>

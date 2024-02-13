@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/normilize.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/test.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/authorization.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div class="modal__container" id="modal-container_1">
+    <div class="modal__content">
+        <div class="modal__close close-modal" title="Close">
+            <i class='bx bx-x'></i>
+        </div>
+        <div class="modal__title">
+            <h1 class="authorization">Авторизация</h1>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-element">
+                <input type="text" name="username" id="email_auth" placeholder="E-mail">
+            </div>
+            <div class="form-element">
+                <input type="password" name="password" id="password-auth" placeholder="Пароль">
+            </div>
+            <div class="form-element">
+                <a href="#">Забыл пароль</a>
+            </div>
+            <div class="form-element">
+                <button class="enter" type="submit">Войти</button>
+            </div>
+        </form>
+        <div class="form-element">
+            <button class="registration_1" id="open-modal_2">Зарегистрироваться</button>
+        </div>
+    </div>
+</div>
+<div class="modal__container" id="modal-container_2">
+    <div class="modal__content">
+        <div class="modal__close close-modal" title="Close">
+            <i class='bx bx-x'></i>
+        </div>
+
+        <div class="modal__title">
+            <h1 class="registration">Регистрация</h1>
+        </div>
+        <form action="#" th:action="@{/registration}" th:object="${userDto}" method="post" >
+            <div class="form-element">
+                <input type="text" name="name" id="name" placeholder="Имя">
+            </div>
+            <div class="form-element">
+                <input type="text" name="surname" id="surname" placeholder="Фамилия">
+            </div>
+            <div class="form-element">
+                <input type="text" name="email" id="email" placeholder="E-mail">
+            </div>
+            <div class="form-element">
+                <input type="password" name="password" id="password" placeholder="Пароль">
+            </div>
+            <div class="form-element">
+                <input type="password" name="matchingPassword" id="repeat_password" placeholder="Повторите пароль">
+            </div>
+
+            <!-- <div class="form-element">
+                <a href="#">Забыл пароль</a>
+            </div> -->
+            <!-- <div class="form-element">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Запомнить меня</label>
+            </div> -->
+            <div class="form-element">
+                <button class="registration_2" type="submit" name="action" value="add">Зарегистрироваться</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

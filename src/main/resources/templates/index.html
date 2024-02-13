@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/normilize.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/test.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/authorization.css" rel="stylesheet" type="text/css" media="all" />
+    <title>Ледяной Феникс</title>
+</head>
+<body>
+
+<section class="showcase">
+    <header class="header">
+        <div class="header__tabs__nav">
+                <div class="navbar">
+                    <nav class="header__nav">
+                        <ul class="nav-links">
+                            <a href="#">Китайский чай</a>
+                            <a href="#">Травяные чаи</a> 
+                            <a href="#">Посуда для чайной церемонии</a>
+                        </ul> 
+                        <div class="burger">
+                          <div class="line1"></div>
+                          <div class="line2"></div>
+                          <div class="line3"></div>
+                        </div>
+                    </nav>
+                </div>
+            
+            <a href="#" class="header__logo">
+                <img src="img/dragon_2.png">
+            </a>
+
+            <nav class="header__nav">
+                <div class="header__tabs-inner">
+                    <a href="#" class="header__tabs">
+                        <img src="img/Heart.svg" alt="favorite">
+                    </a>
+                    <a href="#" class="header__tabs">
+                        <img src="img/shopping.svg" alt="shopping">
+                    </a>
+                    <button type="submit" class="header__tabs__button" id="open-modal_1">
+                        <img src="img/User.svg" alt="profile">
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="header__nav__list">
+            <nav class="header__nav">
+                <ul class="header__list">
+                    <li class="header__item"><a class="header__link" href="#">О нас</a></li>
+                    <li class="header__item"><a class="header__link" href="#">Покупателям</a></li>
+                    <li class="header__item"><a class="header__link" href="#">Отзывы</a></li>
+                    <li class="header__item"><a class="header__link" href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="product-image-box">
+            <div class="product-img-container">
+              <img src="img/fontest.jpg" alt="fon">
+            </div>
+          <a href="#" class="product-hover-box">
+          </a>
+        </div>
+    </div>
+</section>
+
+    <div th:replace="authorization :: div.modal__container"></div>
+        
+    <script src="js/menu.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
