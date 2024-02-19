@@ -14,74 +14,80 @@
     <link href="css/authorization.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-<div class="modal__container" id="modal-container_1">
-    <div class="modal__content">
-        <div class="modal__close close-modal" title="Close">
-            <i class='bx bx-x'></i>
-        </div>
-        <div class="modal__title">
-            <h1 class="authorization">Авторизация</h1>
-        </div>
+    <div class="modal__container" id="modal-container_1">
+        <div class="modal__content">
+            <div class="modal__close close-modal" title="Close">
+                <i class='bx bx-x'></i>
+            </div>
+            <div class="modal__title">
+                <h1 class="authorization">Авторизация</h1>
+            </div>
 
-        <form th:action="@{/login}" method="post">
+            <form th:action="@{/login}" method="post">
             <div class="form-element">
                 <input type="text" name="username" id="email_auth" placeholder="E-mail">
             </div>
             <div class="form-element">
-                <input type="password" name="password" id="password-auth" placeholder="Пароль">
+                <input type="password" name="password" id="password_auth" placeholder="Пароль">
+                <a href="#" class="password-control" onclick="return show_hide_password_auth(this);"></a>
             </div>
             <div class="form-element">
                 <a href="#">Забыл пароль</a>
             </div>
             <div class="form-element">
-                <button class="enter" type="submit">Войти</button>
+                <button class="enter">
+                    <span class="button__text">Войти</span>
+                </button>
             </div>
-        </form>
-        <div class="form-element">
-            <button class="registration_1" id="open-modal_2">Зарегистрироваться</button>
+            </form>
+            <div class="form-element">
+                <button class="registration_1" id="open-modal_2">
+                    <span class="button__text">Зарегистрироваться</span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
-<div class="modal__container" id="modal-container_2">
-    <div class="modal__content">
-        <div class="modal__close close-modal" title="Close">
-            <i class='bx bx-x'></i>
+    <div class="modal__container" id="modal-container_2">
+        <div class="modal__content">
+            <div class="modal__close close-modal" title="Close">
+                <i class='bx bx-x'></i>
+            </div>
+            <div class="modal__title">
+                <h1 class="registration">Регистрация</h1>
+            </div>
+            <form id="registration">
+                <div class="form-element">
+                    <input type="text" id="name" name="name" placeholder="Имя" readonly onfocus="this.removeAttribute('readonly');">
+                    <small></small>
+                </div>
+                <div class="form-element">
+                    <input type="text" id="surname" name="surname" placeholder="Фамилия" readonly onfocus="this.removeAttribute('readonly');">
+                    <small></small>
+                </div>
+                <div class="form-element">
+                    <input type="text" id="email" name="email" placeholder="E-mail" readonly onfocus="this.removeAttribute('readonly');">
+                    <small></small>
+                </div>
+                <div class="form-element">
+                    <input type="password" id="password" name="password" placeholder="Пароль" readonly onfocus="this.removeAttribute('readonly');">
+                    <a href="#" class="password-control" onclick="return show_hide_password_reg(this);"></a>
+                    <small></small>
+                </div>
+                <div class="form-element">
+                    <input type="password" id="repeat_password" name="matchingPassword" placeholder="Повторите пароль" readonly onfocus="this.removeAttribute('readonly');">
+                    <small></small>
+                </div>
+                <div class="form-element">
+                    <button class="registration_2" id="button" type="submit">
+                        <span class="button__text">Зарегистрироваться</span>
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <div class="modal__title">
-            <h1 class="registration">Регистрация</h1>
-        </div>
-        <form action="#" th:action="@{/registration}" th:object="${userDto}" method="post" >
-            <div class="form-element">
-                <input type="text" name="name" id="name" placeholder="Имя">
-            </div>
-            <div class="form-element">
-                <input type="text" name="surname" id="surname" placeholder="Фамилия">
-            </div>
-            <div class="form-element">
-                <input type="text" name="email" id="email" placeholder="E-mail">
-            </div>
-            <div class="form-element">
-                <input type="password" name="password" id="password" placeholder="Пароль">
-            </div>
-            <div class="form-element">
-                <input type="password" name="matchingPassword" id="repeat_password" placeholder="Повторите пароль">
-            </div>
-
-            <!-- <div class="form-element">
-                <a href="#">Забыл пароль</a>
-            </div> -->
-            <!-- <div class="form-element">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Запомнить меня</label>
-            </div> -->
-            <div class="form-element">
-                <button class="registration_2" type="submit" name="action" value="add">Зарегистрироваться</button>
-            </div>
-        </form>
     </div>
-</div>
 
+    <script src="js/modal.js"></script>
     <script src="js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 </body>
 </html>
