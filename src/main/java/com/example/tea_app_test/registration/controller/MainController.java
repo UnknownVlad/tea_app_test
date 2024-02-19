@@ -65,9 +65,6 @@ public class MainController {
     private ProductRepo productRepo;
     @GetMapping("/registration")
     public String registration(UserDto userDto) {
-        productRepo.save(
-                new Test()
-        );
         return "index";
     }
 
