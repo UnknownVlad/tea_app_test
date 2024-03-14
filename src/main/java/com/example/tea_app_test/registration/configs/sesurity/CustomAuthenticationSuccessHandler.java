@@ -1,5 +1,6 @@
 package com.example.tea_app_test.registration.configs.sesurity;
 
+/*
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -21,4 +22,4 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         response.getWriter().write(successResponse.toString());
         response.getWriter().flush();
     }
-}
+}*/

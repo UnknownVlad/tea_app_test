@@ -1,5 +1,6 @@
 package com.example.tea_app_test.registration.configs.sesurity;
 
+/*
 import com.example.tea_app_test.custom_exception.Response;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -27,3 +28,4 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     }
 
 }
+*/
