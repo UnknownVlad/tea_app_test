@@ -1,5 +1,6 @@
 package com.example.tea_app_test.registration.configs.sesurity;
 
+/*
 
 
 import com.example.tea_app_test.model.user.UserService;
@@ -64,3 +65,4 @@ public class WebSecurityConfig  {
 
 }
 
+*/

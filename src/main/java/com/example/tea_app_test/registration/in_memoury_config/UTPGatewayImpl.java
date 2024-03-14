@@ -15,6 +15,7 @@ public class UTPGatewayImpl implements UTPGateway {
     private static final Long TTL = 1000L;
     private HashMap<String, String> codes = new HashMap<>();
     private HashMap<String, Long> creationTimes = new HashMap<>();
+
     @Override
     public void save(String code, String email) {
         codes.put(code, email);
@@ -22,6 +23,7 @@ public class UTPGatewayImpl implements UTPGateway {
         System.out.println();
     }
 
+    //мб есть смысл переназвать метод
     @Override
     public String isValid(String code) {
         Long creationTime = creationTimes.remove(code);
@@ -38,7 +40,7 @@ public class UTPGatewayImpl implements UTPGateway {
     }
 
     private boolean isFinish(Long creationTime){
-        return  System.currentTimeMillis() / 1000L - creationTime > TTL;
+        return System.currentTimeMillis() / 1000L - creationTime > TTL;
     }
     @Scheduled(fixedDelay = 1000)
     private void clearNonValid(){

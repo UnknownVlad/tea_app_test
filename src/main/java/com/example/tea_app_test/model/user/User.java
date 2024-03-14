@@ -1,11 +1,12 @@
 package com.example.tea_app_test.model.user;
 
 import com.example.tea_app_test.model.product.Review;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -17,16 +18,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @ToString
+@Builder
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true)
     private String email;
+
     private String password;
     private String name;
     private String surname;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -37,22 +41,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Review> reviews = new ArrayList<>();
 
-
-    public User(String email, String password, String name, String surname, Set<Role> roles, boolean active) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.roles = roles;
-        this.active = active;
-
-    }
-
     @Override
     public String getPassword() {
         return password;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

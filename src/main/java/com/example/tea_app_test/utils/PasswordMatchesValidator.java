@@ -2,10 +2,10 @@ package com.example.tea_app_test.utils;
 
 
 
-import com.example.tea_app_test.model.user.UserDto;
+import com.example.tea_app_test.model.user.UserDTO;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 
@@ -14,7 +14,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
     }
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){
-        UserDto user = (UserDto) obj;
+        UserDTO user = (UserDTO) obj;
         return user.getPassword().equals(user.getMatchingPassword());
     }
 }

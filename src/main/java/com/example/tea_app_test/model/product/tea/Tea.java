@@ -2,12 +2,13 @@ package com.example.tea_app_test.model.product.tea;
 
 import com.example.tea_app_test.model.product.Product;
 import com.example.tea_app_test.model.product.Review;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;

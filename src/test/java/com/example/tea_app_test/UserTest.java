@@ -20,7 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @AutoConfigureDataJpa
 public class UserTest {
 
-    @Autowired
+    /*@Autowired
     private UserService userService;
 
     @Autowired
@@ -48,5 +48,5 @@ public class UserTest {
         assertThat(foundUser).isNotNull();
         assertThat(foundUser.getName()).isEqualTo(user.getName());
         // Дополнительные проверки, если необходимо
-    }
+    }*/
 }

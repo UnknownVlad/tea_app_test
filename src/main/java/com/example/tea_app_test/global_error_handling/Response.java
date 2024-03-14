@@ -1,12 +1,15 @@
-package com.example.tea_app_test.custom_exception;
+package com.example.tea_app_test.global_error_handling;
 
-import lombok.*;
-import org.springframework.http.HttpStatus;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Deprecated
 public class Response {
     private String message;
     private Integer status;

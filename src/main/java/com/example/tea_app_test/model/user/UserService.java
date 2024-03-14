@@ -1,10 +1,7 @@
 package com.example.tea_app_test.model.user;
 
 
-import com.example.tea_app_test.model.user.Role;
-import com.example.tea_app_test.model.user.User;
-import com.example.tea_app_test.model.user.UserDto;
-import com.example.tea_app_test.model.user.UserRepository;
+import com.example.tea_app_test.global_error_handling.exeptions.UserExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,23 +31,25 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
-    public boolean save(UserDto user) {
-        User userFromDB = userRepository.findByEmail(user.getEmail());
+    public void save(User user) {
+        userRepository.save(user);
+    }
 
+    public void save(UserDTO userDTO) {
+        User userFromDB = userRepository.findByEmail(userDTO.getEmail());
         if (userFromDB != null) {
-            return false;
+            throw new UserExistException("Пользователь с таким email адресом уже существует");
         }
         userRepository.save(
-                new User(
-                        user.getEmail(),
-                        passwordEncoder.encode(user.getPassword()),
-                        user.getName(),
-                        user.getSurname(),
-                        Set.of(Role.USER),
-                        false
-                )
+                User.builder()
+                        .email(userDTO.getEmail())
+                        .password(passwordEncoder.encode(userDTO.getPassword()))
+                        .name(userDTO.getName())
+                        .surname(userDTO.getSurname())
+                        .active(false)
+                        .roles(userDTO.getRole())
+                .build()
         );
-        return true;
     }
 
     public void activateAccount(String email){

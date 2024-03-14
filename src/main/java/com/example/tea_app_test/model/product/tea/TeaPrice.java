@@ -1,8 +1,8 @@
 package com.example.tea_app_test.model.product.tea;
 
 import com.example.tea_app_test.model.product.tea.Tea;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "tea_price")

@@ -1,11 +1,10 @@
 package com.example.tea_app_test.model.product.dishes;
 
 import com.example.tea_app_test.model.product.*;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
