@@ -28,7 +28,7 @@ jobs:
           username: e1cringe
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker tea-app
-        run: docker build --file ./Dockerfile --tag e1cringe/tea-app:latest .
+        run: docker build --file Dockerfile --tag e1cringe/tea-app:latest .
       - name: Push Docker tea-app
         run: docker push e1cringe/tea-app
 
