@@ -27,7 +27,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker build --file ./Dockerfile --tag $DOCKER_USERNAME/tea-app:latest .
+          docker build --file Dockerfile --tag $DOCKER_USERNAME/tea-app:latest .
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker push $DOCKER_USERNAME/tea-app
 
