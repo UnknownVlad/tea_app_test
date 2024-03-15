@@ -19,10 +19,10 @@ jobs:
       -  name: Generate module jars
          run: gradle clean build -x test
       -  name: Build & Push Docker tea-app
-         uses: mr-smithers-excellent/docker-build-push@v5
          with:
            username: e1cringe
            password: ${{ secrets.DOCKER_PASSWORD }}
          run: docker build --file ./Dockerfile --tag e1cringe/tea-app:latest .
-
+      -  name: Docker push
+         run: docker push e1cringe/tea-app
 
