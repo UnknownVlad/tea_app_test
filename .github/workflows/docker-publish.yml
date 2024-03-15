@@ -18,15 +18,14 @@ jobs:
            cache: gradle
       -  name: Generate module jars
          run: gradle clean build -x test
-      -  name: Build & Push Docker data-service
+      -  name: Build & Push Docker tea-app
          uses: mr-smithers-excellent/docker-build-push@v5
          with:
-           context: ./tea_app_test
+           #context: ./
            image: e1cringe/tea-app
            tags: latest
            registry: docker.io
-           dockerfile: ./tea_app_test/Dockerfile
+           dockerfile: ./Dockerfile
            username: e1cringe
            password: ${{ secrets.DOCKER_PASSWORD }}
-      -  name: Build & Push Docker Image Send-Manager
-         uses: mr-smithers-excellent/docker-build-push@v5
+
