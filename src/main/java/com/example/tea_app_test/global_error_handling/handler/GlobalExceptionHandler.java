@@ -2,6 +2,7 @@ package com.example.tea_app_test.global_error_handling.handler;
 
 import com.example.tea_app_test.global_error_handling.CustomErrorResponse;
 import com.example.tea_app_test.global_error_handling.exeptions.InvalidCodeException;
+import com.example.tea_app_test.global_error_handling.exeptions.NoRightPasswordException;
 import com.example.tea_app_test.global_error_handling.exeptions.NotValidFields;
 import com.example.tea_app_test.global_error_handling.exeptions.UserExistException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,6 +51,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public CustomErrorResponse handleInvalidCode(InvalidCodeException ex, HttpServletRequest request) {
+        return CustomErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build();
+    }
+
+    @ExceptionHandler(NoRightPasswordException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public CustomErrorResponse handleNoRightPassword(NoRightPasswordException ex, HttpServletRequest request) {
         return CustomErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
                 .status(HttpStatus.BAD_REQUEST.value())
