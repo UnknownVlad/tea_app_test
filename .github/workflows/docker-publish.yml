@@ -21,9 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Generate module jars
-        run: |
-          ./gradlew clean build -x test
-
+        run: gradle clean build -x test
       - name: Build & Push Docker tea-app
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
