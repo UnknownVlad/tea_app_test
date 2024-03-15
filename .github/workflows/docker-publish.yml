@@ -5,7 +5,6 @@ on:
     branches: [ "upd" ]
   pull_request:
     branches: [ "upd" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
