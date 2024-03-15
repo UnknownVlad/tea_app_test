@@ -37,6 +37,7 @@ public class SecurityConfig {
                                 //.requestMatchers("/home").permitAll()
                                 //.requestMatchers("/ss").authenticated()
                                 .requestMatchers("/my-page").authenticated()
+                                .requestMatchers("/password/update/new").authenticated()
                                 .anyRequest().permitAll()
                 ).formLogin(
                         (formLogin) ->

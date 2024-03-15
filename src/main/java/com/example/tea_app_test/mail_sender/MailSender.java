@@ -21,7 +21,7 @@ public class MailSender {
 
     public void sendHtmlMessage(String emailTo, String subject, String htmlMessage) throws MessagingException {
         MimeMessage mailMessage = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mailMessage, true);
+        MimeMessageHelper helper = new MimeMessageHelper(mailMessage, true, "UTF-8");
         mailMessage.setFrom(username);
         helper.setTo(emailTo);
         helper.setSubject(subject);

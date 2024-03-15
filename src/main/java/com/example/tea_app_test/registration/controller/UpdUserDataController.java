@@ -2,6 +2,7 @@ package com.example.tea_app_test.registration.controller;
 
 
 import com.example.tea_app_test.global_error_handling.exeptions.InvalidCodeException;
+import com.example.tea_app_test.global_error_handling.exeptions.NoRightPasswordException;
 import com.example.tea_app_test.global_error_handling.exeptions.NotValidFields;
 import com.example.tea_app_test.mail_sender.MailSender;
 import com.example.tea_app_test.model.user.User;
@@ -9,6 +10,7 @@ import com.example.tea_app_test.model.user.UserDTO;
 import com.example.tea_app_test.model.user.UserService;
 import com.example.tea_app_test.registration.in_memoury_config.UTPGatewayImpl;
 import com.example.tea_app_test.utils.ValidEmail;
+import com.example.tea_app_test.utils.ValidPassword;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,44 +36,31 @@ public class UpdUserDataController {
     private UserService userService;
     @Autowired
     private MailSender mailSender;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //Подумать как убрать BindingResult
-    @PostMapping("/forgot/password")
-    public ResponseEntity<?> forgotPassword(@RequestParam String email) throws MessagingException {
-
+    @PostMapping("/password/update")
+    public ResponseEntity<?> forgotPassword(@ValidEmail @RequestParam String email) throws MessagingException {
         //мб для безопасности данные не стоит вообще сигнализировать об этом
-        if (userService.findByEmail(email) == null) {
+        /*if (userService.findByEmail(email) == null) {
             throw new IllegalArgumentException("Пользователя с таким email не существует");
-        }
-
+        }*/
         String code = utpGateway.generate();
         utpGateway.save(code, email);
 
         String message = "Код подтверждения для обновления пароля: \n%s".formatted(code);
-        mailSender.sendHtmlMessage(email, "Upd password", message);
+        mailSender.sendMessage(email, "Upd password", message);
 
         return ResponseEntity.ok().build();
-        /*System.out.println("ПАРОЛЬ");
-        if (bindingResult.hasErrors()){
-            throw new NotValidFields("Вы предоставили невалидные данные");
-        } else if (userService.findByEmail(email) == null) {
-            throw new IllegalArgumentException("Пользователя с таким email не существует");
-        } else {
-            //мб, есть смысл пользователя неактивным в этот момент
-            String code = utpGateway.generate();
-            utpGateway.save(code, email);
-
-            String message = "Код подтверждения для обновления пароля: \n%s".formatted(code);
-            mailSender.sendHtmlMessage(email, "Upd password", message);
-        }
-        return ResponseEntity.ok().build();*/
     }
 
-    //подумать, как реализовать слегка иначе
-    @PostMapping("/forgot/password/update")
-    public ResponseEntity<?> upd(
+
+    //возможно, стоит кидать более короткие коды подтверждения(опционально, тогда придется менять гетвей)
+    @PostMapping("/password/update/forgot")
+    public ResponseEntity<?> updateForgottenPassword(
             @RequestParam String code,
-            @RequestParam("new_password") String newPassword
+            @ValidPassword @RequestParam("new_password") String newPassword
     ) {
         String email = utpGateway.isValid(code);
 
@@ -79,10 +69,29 @@ public class UpdUserDataController {
         }else {
             User user = userService.findByEmail(email);
             user.setPassword(newPassword);
+            userService.save(user);
         }
-
         return ResponseEntity.ok().build();
+    }
 
+
+    //Протестить в последствии
+    @PostMapping("/password/update/new")
+    public ResponseEntity<?> updateOldPassword(
+            @RequestParam String oldPassword,
+            @ValidPassword @RequestParam("new_password") String newPassword
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            User loggedInUser = (User) authentication.getPrincipal();
+            if (loggedInUser.getPassword().equals(passwordEncoder.encode(oldPassword))){
+                loggedInUser.setPassword(newPassword);
+                userService.save(loggedInUser);
+            }else{
+                throw new NoRightPasswordException("Не верный старый пароль");
+            }
+        }
+        return ResponseEntity.ok().build();
     }
 
 

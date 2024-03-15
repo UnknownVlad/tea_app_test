@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_DB=tea_db
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=postgres
+      TZ=Europe/Moscow
+    ports:
+      "5438:5432"
+
+  tea-service:
+    restart: on-failure
+    container_name: tea-app-test-docker-2
+    image: ******
+    depends_on: db
+
+    environment:
+      SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tea_db
+      SPRING_DATASOURCE_USERNAME=postgres
+      SPRING_DATASOURCE_PASSWORD=postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      TZ=Europe/Moscow
+    ports:
+      "8080:8080"
+
+
+# Use postgres/example user/password credentials
+#version: '3.9'
+#
+#services:
+#
+#  db:
+#    image: postgres
+#    restart: always
+#    shm_size: 128mb
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#      POSTGRES_DB: tea_db
+#
+#  app:
+#    build: ./
+#    container_name: 'tea-app-test-docker-1'
+#    ports:
+#      - 8080:8080
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tea_db
+#      SPRING_DATASOURCE_USERNAME: postgres
+#      SPRING_DATASOURCE_PASSWORD: postgres
+
