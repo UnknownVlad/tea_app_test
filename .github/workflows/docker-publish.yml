@@ -21,11 +21,11 @@ jobs:
       -  name: Build & Push Docker tea-app
          uses: mr-smithers-excellent/docker-build-push@v5
          with:
-           #context: ./
+           #context: ./tea_app_test
            image: e1cringe/tea-app
            tags: latest
            registry: docker.io
-           dockerfile: ./Dockerfile
+           dockerfile: ./tea_app_test/Dockerfile
            username: e1cringe
            password: ${{ secrets.DOCKER_PASSWORD }}
 
