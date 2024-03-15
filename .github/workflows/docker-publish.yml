@@ -22,12 +22,13 @@ jobs:
 
       - name: Generate module jars
         run: gradle clean build -x test
-      - name: Build & Push Docker tea-app
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          docker build --file Dockerfile --tag $DOCKER_USERNAME/tea-app:latest .
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker push $DOCKER_USERNAME/tea-app
+      - name: login Docker hub
+        uses: docker/login-action@v2
+        with:
+          username: e1cringe
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker tea-app
+        run: docker build --file ./Dockerfile --tag e1cringe/tea-app:latest .
+      - name: Push Docker tea-app
+        run: docker push e1cringe/tea-app
 
